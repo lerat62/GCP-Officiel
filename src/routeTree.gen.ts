@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as FicheSlugRouteImport } from './routes/fiche.$slug'
+import { Route as FondateurSlugRouteImport } from './routes/fondateur.$slug'
 import { Route as RubriqueSlugRouteImport } from './routes/rubrique.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -29,6 +30,11 @@ const FicheSlugRoute = FicheSlugRouteImport.update({
   path: '/fiche/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FondateurSlugRoute = FondateurSlugRouteImport.update({
+  id: '/fondateur/$slug',
+  path: '/fondateur/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RubriqueSlugRoute = RubriqueSlugRouteImport.update({
   id: '/rubrique/$slug',
   path: '/rubrique/$slug',
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/fiche/$slug': typeof FicheSlugRoute
+  '/fondateur/$slug': typeof FondateurSlugRoute
   '/rubrique/$slug': typeof RubriqueSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/fiche/$slug': typeof FicheSlugRoute
+  '/fondateur/$slug': typeof FondateurSlugRoute
   '/rubrique/$slug': typeof RubriqueSlugRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,30 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/fiche/$slug': typeof FicheSlugRoute
+  '/fondateur/$slug': typeof FondateurSlugRoute
   '/rubrique/$slug': typeof RubriqueSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/a-propos' | '/fiche/$slug' | '/rubrique/$slug'
+  fullPaths:
+    '/' | '/a-propos' | '/fiche/$slug' | '/fondateur/$slug' | '/rubrique/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/a-propos' | '/fiche/$slug' | '/rubrique/$slug'
-  id: '__root__' | '/' | '/a-propos' | '/fiche/$slug' | '/rubrique/$slug'
+  to:
+    '/' | '/a-propos' | '/fiche/$slug' | '/fondateur/$slug' | '/rubrique/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/a-propos'
+    | '/fiche/$slug'
+    | '/fondateur/$slug'
+    | '/rubrique/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AProposRoute: typeof AProposRoute
   FicheSlugRoute: typeof FicheSlugRoute
+  FondateurSlugRoute: typeof FondateurSlugRoute
   RubriqueSlugRoute: typeof RubriqueSlugRoute
 }
 
@@ -92,6 +110,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FicheSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/fondateur/$slug': {
+      id: '/fondateur/$slug'
+      path: '/fondateur/$slug'
+      fullPath: '/fondateur/$slug'
+      preLoaderRoute: typeof FondateurSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rubrique/$slug': {
       id: '/rubrique/$slug'
       path: '/rubrique/$slug'
@@ -106,6 +131,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AProposRoute: AProposRoute,
   FicheSlugRoute: FicheSlugRoute,
+  FondateurSlugRoute: FondateurSlugRoute,
   RubriqueSlugRoute: RubriqueSlugRoute,
 }
 export const routeTree = rootRouteImport

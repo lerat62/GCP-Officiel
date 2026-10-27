@@ -25,7 +25,7 @@ export function ManualShell({ children }: { children: ReactNode }) {
     return () => document.removeEventListener('keydown', listener);
   }, []);
   const results = searchArticles(query, filter);
-  return <div className="manual-app">
+  return <div className={`manual-app ${(pathname === '/' || pathname === '/a-propos') ? 'landing-mode' : ''}`}>
     <a href="#main-content" className="skip-link">Aller au contenu</a>
     {mobileOpen && <div className="sidebar-backdrop" onClick={() => setMobileOpen(false)} />}
     <aside className={`manual-sidebar ${mobileOpen ? 'is-open' : ''}`} aria-label="Navigation du manuel">
@@ -65,7 +65,7 @@ export function ManualShell({ children }: { children: ReactNode }) {
         <span className="topbar-status"><span className="status-dot" /> ÉDITION COMMUNAUTAIRE</span>
       </header>
       <main id="main-content" tabIndex={-1}>{children}</main>
-      <footer className="site-footer"><div><span className="footer-brand">GCP</span> Manuel communautaire GCP — Arma Reforger</div><span>Version {manualConfig.version} <span className="footer-separator">/</span> {manualConfig.updatedAt}</span><Button variant="ghost" size="icon" aria-label="Revenir en haut de page" title="Revenir en haut" onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' })}><ArrowUp /></Button></footer>
+      <footer className="site-footer"><div><span className="footer-brand">GCP</span> Manuel communautaire GCP — Arma Reforger</div><div className="footer-legal"><span>© {new Date().getFullYear()} — Site communautaire non officiel.</span><span>Contenus et visuels appartenant à leurs auteurs respectifs.</span><span>Reproduction interdite sans autorisation.</span></div><span>Version {manualConfig.version} <span className="footer-separator">/</span> {manualConfig.updatedAt}</span><Button variant="ghost" size="icon" aria-label="Revenir en haut de page" title="Revenir en haut" onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' })}><ArrowUp /></Button></footer>
     </div>
   </div>;
 }
