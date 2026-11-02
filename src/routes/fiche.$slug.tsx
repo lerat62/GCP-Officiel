@@ -2,15 +2,18 @@ import { createFileRoute, Link, notFound } from '@tanstack/react-router';
 import { useState } from 'react';
 import { ArrowLeft, ArrowRight, ChevronRight, ShieldAlert, List, Medal, RotateCcw } from 'lucide-react';
 import { articles, categories, pageHead, type Section } from '@/data/manual';
+import { getProtectedArticle } from '@/utils/resources.functions';
+import { ResourcesPasswordGate } from '@/components/manual/resources-password-gate';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 export const Route = createFileRoute('/fiche/$slug')({
-  loader: ({params}) => { const article = articles.find(a => a.id === params.slug); if (!article) throw notFound(); return article; },
-  head: ({loaderData}) => pageHead(loaderData?.title ?? 'Fiche indisponible', loaderData?.description ?? 'Cette fiche du manuel GCP est indisponible.'),
+  loader: async ({params}) => { const publicArticle = articles.find(a => a.id === params.slug); if (publicArticle) return { article: publicArticle, locked: false }; const protectedArticle = await getProtectedArticle({ data: { id: params.slug } }); if (protectedArticle) return { article: protectedArticle, locked: false }; if (['smep','otage','blesse','interpellation','sse'].includes(params.slug)) return { article: null, locked: true }; throw notFound(); },
+  head: ({loaderData}) => pageHead(loaderData?.article?.title ?? 'Ressources protégées', loaderData?.article?.description ?? 'Accès réservé aux membres autorisés du GCP.'),
   component: ArticlePage,
 });
 function ArticlePage() {
-  const article = Route.useLoaderData();
+  const { article, locked } = Route.useLoaderData();
+  if (locked || !article) return <div className="page-width document-page"><ResourcesPasswordGate /></div>;
   const category = categories.find(c => c.id === article.category);
   const index = articles.findIndex(a => a.id === article.id);
   const prev = articles[index - 1]; const next = articles[index + 1];

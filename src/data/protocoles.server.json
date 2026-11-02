@@ -1,0 +1,170 @@
+[
+  {
+    "id": "smep",
+    "category": "protocoles",
+    "title": "Structure SMEP : briefing",
+    "description": "Situation, Mission, Exécution, Points particuliers.",
+    "sections": [
+      {
+        "title": "S — Situation",
+        "text": "contexte général de l’opération."
+      },
+      {
+        "title": "M — Mission",
+        "text": "objectif."
+      },
+      {
+        "title": "E — Exécution",
+        "text": "plan d’infiltration, plan de renseignements, plan d’action, plan SSE/BDA et plan d’exfiltration."
+      },
+      {
+        "title": "P — Points particuliers",
+        "text": "informations complémentaires importantes."
+      }
+    ],
+    "kind": "smep",
+    "notice": null
+  },
+  {
+    "id": "otage",
+    "category": "protocoles",
+    "title": "Conditionnement d’otage",
+    "description": "De la sécurisation à l’exfiltration dans le scénario de jeu.",
+    "sections": [
+      {
+        "title": "Sécurisation immédiate",
+        "text": "éloigner l’otage de la zone de contact, le placer dans un lieu sûr, contrôler les accès et empêcher la circulation non autorisée à proximité."
+      },
+      {
+        "title": "Contrôle médical",
+        "text": "vérifier l’état physique, prodiguer les premiers soins si nécessaire et signaler toute urgence au commandement."
+      },
+      {
+        "title": "Vérification et identification",
+        "text": "vérifier les effets personnels, rechercher les objets dangereux et préserver les documents permettant une identification. Les éléments sont remis au chef d’élément."
+      },
+      {
+        "title": "Préparation à l’exfiltration",
+        "text": "vérifier l’état de l’otage, choisir le trajet prévu dans le scénario de jeu et organiser son accompagnement protecteur."
+      },
+      {
+        "title": "Exfiltration",
+        "text": "accompagner l’otage en permanence, surveiller son état et le conduire vers le point d’extraction, la FOB ou une structure médicale. Le remettre aux personnes compétentes."
+      }
+    ],
+    "kind": "steps",
+    "notice": "La sécurité de l’otage prime sur toute autre action."
+  },
+  {
+    "id": "blesse",
+    "category": "protocoles",
+    "title": "Réaction face à un blessé sous le feu",
+    "description": "La coordination du groupe et l’évacuation d’un joueur blessé.",
+    "sections": [
+      {
+        "title": "Réaction au contact",
+        "text": "signaler le contact et le blessé, les opérateurs valides cherchent un couvert et suivent les consignes du chef."
+      },
+      {
+        "title": "Mise à couvert",
+        "text": "le blessé se met à couvert si possible ; sinon, une aide est organisée lorsque le scénario le permet. Des fumigènes peuvent être utilisés dans le jeu selon le contexte."
+      },
+      {
+        "title": "Contrôle rapide à couvert",
+        "text": "vérifier la conscience et rechercher une hémorragie importante ; appliquer les soins adaptés au système médical du jeu."
+      },
+      {
+        "title": "Sécurisation",
+        "text": "organiser la surveillance du groupe et permettre l’intervention du médic lorsque la situation le permet."
+      },
+      {
+        "title": "Évacuation",
+        "text": "préparer CASEVAC/MEDEVAC, rejoindre le PRV (Point de Rassemblement des Victimes), puis la FOB ou une structure médicale."
+      }
+    ],
+    "kind": "steps",
+    "notice": "Procédure de roleplay Arma Reforger uniquement. Ceci n’est pas une instruction médicale réelle."
+  },
+  {
+    "id": "interpellation",
+    "category": "protocoles",
+    "title": "Interpellation d’un individu",
+    "description": "Une interpellation progressive et contrôlée dans le jeu.",
+    "sections": [
+      {
+        "title": "Prise de contact",
+        "text": "le chef d’élément attribue les rôles d’interpellation et de couverture."
+      },
+      {
+        "title": "Mise en conformité",
+        "text": "utiliser des ordres verbaux clairs, adaptés au scénario de jeu."
+      },
+      {
+        "title": "Approche",
+        "text": "coordonner l’approche et conserver la couverture prévue par le scénario."
+      },
+      {
+        "title": "Menottage",
+        "text": "contrôler l’individu et poser les menottes ou liens disponibles dans le jeu."
+      },
+      {
+        "title": "Fouille de sécurité",
+        "text": "vérifier vêtements et sacs dans le cadre du jeu et remettre les objets trouvés au chef d’élément."
+      },
+      {
+        "title": "Identification",
+        "text": "récupérer les informations et documents d’identité présents dans le scénario."
+      }
+    ],
+    "kind": "steps",
+    "notice": "Priorité à la sécurité des joueurs. Toutes les actions sont limitées au scénario de jeu."
+  },
+  {
+    "id": "sse",
+    "category": "protocoles",
+    "title": "SSE — Sensitive Site Exploitation",
+    "description": "L’exploitation des éléments d’un site dans la simulation.",
+    "sections": [
+      {
+        "title": "Documentation des PAX neutralisés ",
+        "items": [
+          "Documenter visuellement la situation dans le cadre du scénario de jeu.",
+          "Photographier l’équipement et les objets pertinents.",
+          "Associer aux éléments de jeu leurs coordonnées et informations de provenance disponibles."
+        ]
+      },
+      {
+        "title": "Fouille des PAX ",
+        "items": [
+          "Rechercher dans le scénario pièces d’identité, téléphones, carnets, clés et supports de stockage.",
+          "Signaler les éléments au chef d’élément."
+        ]
+      },
+      {
+        "title": "Récupération de matériel ",
+        "items": [
+          "Répertorier l’armement et l’équipement du scénario.",
+          "Les armes et équipements doivent être traités selon les mécaniques du jeu.",
+          "Matériel d’intérêt : radios, téléphones, GPS, ordinateurs, tablettes, cartes et équipements militaires."
+        ]
+      },
+      {
+        "title": "Fouille du bâtiment ",
+        "items": [
+          "Organiser une recherche systématique des pièces et dépendances dans la simulation.",
+          "Éléments d’intérêt du scénario : armement, munitions, documents, communications, véhicules et objets suspects.",
+          "Ne pas fournir d’instructions techniques réelles sur la neutralisation d’explosifs, les IED ou les produits chimiques. Signaler les objets suspects et respecter les règles de sécurité du jeu."
+        ]
+      },
+      {
+        "title": "Exploitation des documents ",
+        "items": [
+          "Identifier et préserver les documents pertinents du scénario.",
+          "Les informations utiles sont transmises au commandement selon les mécaniques du jeu."
+        ]
+      }
+    ],
+    "kind": "standard",
+    "notice": "Aucune SSE ne débute avant que le chef d’élément ait déclaré la zone sécurisée."
+  }
+]
