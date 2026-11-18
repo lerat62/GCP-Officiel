@@ -630,3 +630,15 @@ figcaption a { text-decoration: underline; }
 .source-page-figure img { display: block; width: 100%; height: auto; object-fit: contain; }
 .source-page-figure figcaption { margin-top: 9px; color: var(--muted-foreground); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
 @media(max-width:767px) { .source-content pre { padding: 16px; font-size: 12px; } }
+
+/* Source documents: readable transcription and original visual plates */
+.source-content { display: grid; gap: 26px; }
+.source-ocr-section { margin: 0; padding: 24px 28px; border: 1px solid var(--border); background: var(--card); }
+.source-ocr-section h2, .source-illustrations h2 { margin: 0 0 18px; }
+.source-ocr-section pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--foreground); font: inherit; font-size: 14px; line-height: 1.85; }
+.source-illustrations { display: grid; gap: 18px; }
+.source-illustrations h2 { padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.source-page-figure { margin: 0; padding: 14px; border: 1px solid var(--border); border-radius: 4px; background: var(--card); }
+.source-page-figure img { display: block; width: 100%; height: auto; object-fit: contain; }
+.source-page-figure figcaption { margin-top: 9px; color: var(--muted-foreground); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+@media(max-width:767px) { .source-ocr-section { padding: 16px; } .source-ocr-section pre { font-size: 12px; } }
