@@ -614,3 +614,11 @@ figcaption a { text-decoration: underline; }
 .resources-password-submit:hover { background: #d0c398; color: #11110d; }
 .resources-password-error { margin: 0; color: #e5a09a; font-size: 12px; }
 .resources-password-note { display: block; margin-top: 21px; color: #777165; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
+
+/* Original resource PDFs: bytes are embedded server-side and only returned after access validation. */
+.original-pdf-viewer { margin: 24px 0 32px; border: 1px solid rgba(178,164,119,.28); background: #11110f; }
+.original-pdf-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 13px 16px; border-bottom: 1px solid rgba(178,164,119,.22); color: #B2A477; font-size: 10px; font-weight: 800; letter-spacing: .12em; }
+.original-pdf-toolbar a { color: #e9e2d2; text-decoration: none; border: 1px solid rgba(178,164,119,.55); padding: 9px 12px; font-size: 11px; letter-spacing: .04em; }
+.original-pdf-toolbar a:hover { background: rgba(178,164,119,.12); }
+.original-pdf-viewer iframe { display: block; width: 100%; height: min(82vh, 1050px); min-height: 620px; border: 0; background: #24231f; }
+@media (max-width: 640px) { .original-pdf-toolbar { align-items: flex-start; flex-direction: column; } .original-pdf-viewer iframe { min-height: 68vh; height: 68vh; } }

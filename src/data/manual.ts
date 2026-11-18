@@ -3,7 +3,7 @@ import data from './manual.json';
 export type Section = { title: string; text?: string; items?: string[] };
 export type Article = {
   id: string; category: string; title: string; description: string;
-  sections: Section[]; kind: string; notice: string | null;
+  sections: Section[]; kind: string; notice: string | null; pdfData?: string; pdfName?: string;
 };
 export const categories = data.categories;
 export const articles: Article[] = data.articles;

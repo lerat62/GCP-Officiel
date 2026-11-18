@@ -7,7 +7,7 @@ import { ResourcesPasswordGate } from '@/components/manual/resources-password-ga
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 export const Route = createFileRoute('/fiche/$slug')({
-  loader: async ({params}) => { const publicArticle = articles.find(a => a.id === params.slug); if (publicArticle) return { article: publicArticle, locked: false }; const protectedArticle = await getProtectedArticle({ data: { id: params.slug } }); if (protectedArticle) return { article: protectedArticle, locked: false }; if (['smep','otage','blesse','interpellation','sse'].includes(params.slug)) return { article: null, locked: true }; throw notFound(); },
+  loader: async ({params}) => { const publicArticle = articles.find(a => a.id === params.slug); if (publicArticle) return { article: publicArticle, locked: false }; const protectedArticle = await getProtectedArticle({ data: { id: params.slug } }); if (protectedArticle) return { article: protectedArticle, locked: false }; if (['smep','otage','blesse','interpellation','sse','ctlo','reco'].includes(params.slug)) return { article: null, locked: true }; throw notFound(); },
   head: ({loaderData}) => pageHead(loaderData?.article?.title ?? 'Ressources protégées', loaderData?.article?.description ?? 'Accès réservé aux membres autorisés du GCP.'),
   component: ArticlePage,
 });
@@ -22,7 +22,13 @@ function ArticlePage() {
     <header className="document-heading"><span className="eyebrow">{category?.title} / FICHE {String(index+1).padStart(2,'0')}</span><h1>{article.title}</h1><p>{article.description}</p><span className="document-tag">RÉFÉRENCE COMMUNAUTAIRE · ARMA REFORGER</span></header>
     <div className="document-layout"><article className={`article-body kind-${article.kind}`}>
       {article.notice && <div className="rule-notice"><ShieldAlert size={21} /><p>{article.notice}</p></div>}
-      {article.kind === 'checklist' ? <EquipmentChecklist sections={article.sections} key={article.id} /> : article.kind === 'radiofrequencies' ? <div className="radio-frequency-table-wrap"><table className="radio-frequency-table"><thead><tr><th>Fréquence</th><th>Organisation</th><th>Destination / utilisation</th></tr></thead><tbody>{article.sections.map((section,i) => <tr key={section.title}><td><strong>{section.title}</strong></td><td><strong>{section.items?.[0]}</strong></td><td>{section.items?.[1]}</td></tr>)}</tbody></table></div> : <div className={article.kind === 'smep' ? 'smep-grid' : ''}>{article.sections.map((section,i) => <section id={`section-${i}`} key={i} className={`article-section ${article.kind === 'steps' ? 'step-section' : ''}`}>
+      {article.pdfData ? <section className="original-pdf-viewer" aria-label={`Document original ${article.title}`}>
+        <div className="original-pdf-toolbar">
+          <span>DOCUMENT ORIGINAL · AUCUNE MODIFICATION</span>
+          <a href={`data:application/pdf;base64,${article.pdfData}`} download={article.pdfName ?? `${article.id}.pdf`}>Télécharger le PDF original</a>
+        </div>
+        <iframe title={article.title} src={`data:application/pdf;base64,${article.pdfData}`} />
+      </section> : article.kind === 'checklist' ? <EquipmentChecklist sections={article.sections} key={article.id} /> : article.kind === 'radiofrequencies' ? <div className="radio-frequency-table-wrap"><table className="radio-frequency-table"><thead><tr><th>Fréquence</th><th>Organisation</th><th>Destination / utilisation</th></tr></thead><tbody>{article.sections.map((section,i) => <tr key={section.title}><td><strong>{section.title}</strong></td><td><strong>{section.items?.[0]}</strong></td><td>{section.items?.[1]}</td></tr>)}</tbody></table></div> : <div className={article.kind === 'smep' ? 'smep-grid' : ''}>{article.sections.map((section,i) => <section id={`section-${i}`} key={i} className={`article-section ${article.kind === 'steps' ? 'step-section' : ''}`}>
         {article.kind === 'steps' && <span className="step-number">{String(i+1).padStart(2,'0')}</span>}
         {article.kind === 'smep' && <span className="smep-letter">{section.title.charAt(0)}</span>}
         <div>{section.title && <h2>{article.kind === 'medals' && <Medal size={22} />}{section.title}</h2>}{section.text && <p>{section.text}</p>}
