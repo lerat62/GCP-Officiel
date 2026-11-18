@@ -7,7 +7,7 @@ import { ResourcesPasswordGate } from '@/components/manual/resources-password-ga
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 export const Route = createFileRoute('/fiche/$slug')({
-  loader: async ({params}) => { const publicArticle = articles.find(a => a.id === params.slug); if (publicArticle) return { article: publicArticle, locked: false }; const protectedArticle = await getProtectedArticle({ data: { id: params.slug } }); if (protectedArticle) return { article: protectedArticle, locked: false }; if (['smep','otage','blesse','interpellation','sse','ctlo','reco'].includes(params.slug)) return { article: null, locked: true }; throw notFound(); },
+  loader: async ({params}) => { const publicArticle = articles.find(a => a.id === params.slug); if (publicArticle) return { article: publicArticle, locked: false }; const protectedArticle = await getProtectedArticle({ data: { id: params.slug } }); if (protectedArticle) return { article: protectedArticle, locked: false }; if (['smep','otage','blesse','interpellation','sse','ctlo','reco','transmissions','tai','para','cmo','cmc-procedures','cmu','alat','combat','heliporte','cmc'].includes(params.slug)) return { article: null, locked: true }; throw notFound(); },
   head: ({loaderData}) => pageHead(loaderData?.article?.title ?? 'Ressources protégées', loaderData?.article?.description ?? 'Accès réservé aux membres autorisés du GCP.'),
   component: ArticlePage,
 });
@@ -22,7 +22,7 @@ function ArticlePage() {
     <header className="document-heading"><span className="eyebrow">{category?.title} / FICHE {String(index+1).padStart(2,'0')}</span><h1>{article.title}</h1><p>{article.description}</p><span className="document-tag">RÉFÉRENCE COMMUNAUTAIRE · ARMA REFORGER</span></header>
     <div className="document-layout"><article className={`article-body kind-${article.kind}`}>
       {article.notice && <div className="rule-notice"><ShieldAlert size={21} /><p>{article.notice}</p></div>}
-      {article.pdfData ? <section className="original-pdf-viewer" aria-label={`Document original ${article.title}`}>
+      {article.content ? <section className="source-content" aria-label={`Contenu intégral ${article.title}`}><pre>{article.content}</pre>{article.pageImages?.map((src,i) => <figure className="source-page-figure" key={src}><img src={src} alt={`${article.title} — illustration page ${i+1}`} loading="lazy" /><figcaption>Illustration originale — page {i+1}</figcaption></figure>)}</section> : article.pdfData ? <section className="original-pdf-viewer" aria-label={`Document original ${article.title}`}>
         <div className="original-pdf-toolbar">
           <span>DOCUMENT ORIGINAL · AUCUNE MODIFICATION</span>
           <a href={`data:application/pdf;base64,${article.pdfData}`} download={article.pdfName ?? `${article.id}.pdf`}>Télécharger le PDF original</a>

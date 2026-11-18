@@ -622,3 +622,11 @@ figcaption a { text-decoration: underline; }
 .original-pdf-toolbar a:hover { background: rgba(178,164,119,.12); }
 .original-pdf-viewer iframe { display: block; width: 100%; height: min(82vh, 1050px); min-height: 620px; border: 0; background: #24231f; }
 @media (max-width: 640px) { .original-pdf-toolbar { align-items: flex-start; flex-direction: column; } .original-pdf-viewer iframe { min-height: 68vh; height: 68vh; } }
+
+/* Fiches GCP issues des documents sources : contenu intégré dans la page, sans lecteur PDF. */
+.source-content { display: grid; gap: 22px; }
+.source-content pre { white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; padding: 28px; border: 1px solid var(--border); border-radius: 4px; background: var(--card); color: var(--muted-foreground); font: inherit; font-size: 14px; line-height: 1.85; }
+.source-page-figure { margin: 0; padding: 14px; border: 1px solid var(--border); border-radius: 4px; background: var(--card); }
+.source-page-figure img { display: block; width: 100%; height: auto; object-fit: contain; }
+.source-page-figure figcaption { margin-top: 9px; color: var(--muted-foreground); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+@media(max-width:767px) { .source-content pre { padding: 16px; font-size: 12px; } }
